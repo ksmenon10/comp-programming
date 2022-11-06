@@ -1,5 +1,5 @@
 /*
-ID: kartm
+ID: kartmenon
 LANG: C++11
 TASK: 
 */
@@ -80,10 +80,30 @@ void setIO(string name) {
 	freopen((name+".out").c_str(),"w",stdout);
 }
 
-int main()
-{
-	setIO("");
-	
+int main(){
+	// setIO("minex");
+	int T;
+    cin >> T;
+    ll a[200001];
+    while (T--) {
+        ll n;
+        cin >> n;
+        ll ans = 0;
+        ll curMax = -1000000001;
+        int curIndex = -1;
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        sort(a, a + n);
+        ll tot = 0;
+        int i = 0;
+        REP(i, n) {
+            a[i] -= tot;
+            curMax = max(a[i], curMax);
+            tot += a[i];
+        }
+        cout << curMax << endl;
+    }
 	return 0;
 }
 

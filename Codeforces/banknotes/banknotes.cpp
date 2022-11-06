@@ -1,5 +1,5 @@
 /*
-ID: kartm
+ID: kartmenon
 LANG: C++11
 TASK: 
 */
@@ -82,8 +82,14 @@ void setIO(string name) {
 
 int main()
 {
-	setIO("");
+	setIO("banknotes");
+	int T;
+	cin >> T;
+	int n, k;
 	
+	while (T--) {
+		cin >> n >> k;
+	}	
 	return 0;
 }
 

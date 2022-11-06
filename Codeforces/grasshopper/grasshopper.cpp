@@ -1,5 +1,5 @@
 /*
-ID: kartm
+ID: kartmenon
 LANG: C++11
 TASK: 
 */
@@ -79,11 +79,25 @@ void setIO(string name) {
 	freopen((name+".in").c_str(),"r",stdin);
 	freopen((name+".out").c_str(),"w",stdout);
 }
+ll dis(bool even, ll n) {
+    ll flag = 1;
+    if (even) flag = -1;
+    if (n == 0) return 0;
+    ll start = n / 2;
+    ll mod = n % 2;
+    
+}
 
-int main()
-{
-	setIO("");
-	
+
+int main() {
+	setIO("grasshopper");
+	int T;
+    cin >> T;
+    ll x, n;
+    REP(q, T) {
+        cin >> x >> n;
+        ll finLocation = x + dis(x % 2 == 0, n);
+    }
 	return 0;
 }
 

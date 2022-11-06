@@ -1,10 +1,10 @@
 /*
 ID: kartmenon
 LANG: C++11
-TASK: primegen
+TASK: 
 */
-//#include <algorithm>
-#pragma region
+#pragma region 
+#include <algorithm>
 #include <bitset>
 #include <cctype>
 #include <cmath>
@@ -74,74 +74,34 @@ typedef long long ll;
 #pragma endregion
 
 const int  MX = 100005;
-void print(vector<int> a){
-    REP(i, a.size()){
-        cout << a[i] << endl;
-    }
-}
 void setIO(string name) {
 	ios_base::sync_with_stdio(0); cin.tie(0);
 	freopen((name+".in").c_str(),"r",stdin);
 	freopen((name+".out").c_str(),"w",stdout);
 }
-int N, M;
-void simpleSieve(int lim, vector<int>& prime){
-    bool mark[MX];
-    memset(mark, false, sizeof(mark)); 
-    for(int i = 2; i < lim; i++){
-        if(!mark[i]){
-            prime.push_back(i);
-            for(int j = i * i; j <= lim; j += i){
-                mark[i] = true;
-            }
-        }
-    }
-}
-
-void segSieve(){
-    int lim = (sqrt(M)) + 1;
-    vector<int> prime;
-    simpleSieve(lim, prime);
-    const int size = N - M + 1;
-    bool mark[MX];
-    memset(mark, false, sizeof(mark));
-//    print(prime);
-    for(int i = 0; i < prime.size(); i++){
-        if(prime[i] <= M && prime[i] >=N){
-            cout << prime[i] << endl;
-        }
-        int lowLim = (N/prime[i]) * prime[i];
-        if(lowLim < N){
-            lowLim += prime[i];
-        }
- //       cout << "lowLim: " << lowLim << endl;
-        for(int j = lowLim; j <= M; j+= prime[i]){
-            mark[j-N] = true;// cout << "J: " << j << endl;
-        }
-    }
-
-    for(int i = N; i <= M; i++){
-        if(!mark[i-N]){
-            cout << i << endl;
-        }
-    }
-}
 
 int main()
 {
-//    setIO("primegen");
-    int x; cin >> x;
-    for(int p  = 0; p < x; p++){
-        if(p > 0){
-            cout << endl;
-        }
-	    cin >> N >> M;
-        if(N==0 || N == 1){
-            N = 2;
-        }
-        segSieve();
-    }
-
+	// setIO("linkey");
+	int T;
+	cin >> T;
+	unordered_map<char, int> locs; 
+	REP (q, T) {
+		if (q > 0) cout << endl;
+		string k;
+		cin >> k;
+		REP(i, k.length()) {
+			locs[k[i]] = i;
+		}
+		string l;
+		cin >> l;
+		int ans = 0;
+		FOR(i, 1, l.length()) {
+			ans += abs(locs[l[i]] - locs[l[i-1]]);
+		}
+		cout << ans;
+	}
+	
 	return 0;
 }
 
